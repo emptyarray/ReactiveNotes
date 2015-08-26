@@ -75,7 +75,7 @@ class NotesViewModel: NSObject {
     func addNote(text: String) -> NoteViewModel {
         let note = NoteViewModel(noteText: text)
         
-        var mutableNotes = notes.value.map { $0 }
+        var mutableNotes = notes.value
         mutableNotes.insert(note, atIndex: 0)
         notes.put(mutableNotes)
         
@@ -83,13 +83,13 @@ class NotesViewModel: NSObject {
     }
     
     func deleteNote(index: Int) {
-        var mutableNotes = notes.value.map { $0 }
+        var mutableNotes = notes.value
         mutableNotes.removeAtIndex(index)
         notes.put(mutableNotes)
     }
     
     func editNote(index: Int, text: String) {
-        var mutableNotes = notes.value.map { $0 }
+        var mutableNotes = notes.value
         mutableNotes[index].text.put(text)
         notes.put(mutableNotes)
     }
